@@ -14,9 +14,11 @@ namespace ConsoleApp16
             Library lib = new Library();
             string input;
             string choice;
+            Console.WriteLine("       Welcom to the Library");
+            Console.WriteLine("---------------------------------------");
             do
             {
-                Console.WriteLine("What do you want to do at the libarary?");
+                Console.WriteLine("What do you want to do at the Libarary?");
                 Console.WriteLine("---------------------------------------");
                 Console.WriteLine("See more functions : More functions\n");
                 Console.WriteLine("See all books : Books\n");
@@ -373,6 +375,16 @@ namespace ConsoleApp16
                         string ssearch = input5.Substring(0, 1).ToUpper() + input5.Substring(1);
                         if (input5 == "book")
                         {
+                            if(lib.books.Count == 0)
+                            {
+                                Console.WriteLine("The are not any books at the library");
+                                break;
+                            }
+                            Console.WriteLine("Here ar your options");
+                            foreach(Book book in lib.books)
+                            {
+                                book.Display();
+                            }
                             Console.WriteLine("Enter the Title of the book:");
                             string inputT1 = Console.ReadLine();
                             Console.WriteLine("---------------------------------------");
@@ -405,6 +417,16 @@ namespace ConsoleApp16
                         }
                         else if (input5 == "customer")
                         {
+                            if (lib.borrowers.Count == 0)
+                            {
+                                Console.WriteLine("The are not any customers for the library");
+                                break;
+                            }
+                            Console.WriteLine("Here ar your options");
+                            foreach (Borrower cus in lib.borrowers)
+                            {
+                                cus.Display();
+                            }
                             Console.WriteLine("Enter the name of the customer:");
                             string inputC = Console.ReadLine();
                             Console.WriteLine("---------------------------------------");
