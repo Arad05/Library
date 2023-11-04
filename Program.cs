@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Runtime.InteropServices;
+using System.Transactions;
 
 namespace ConsoleApp16
 {
@@ -74,6 +75,52 @@ namespace ConsoleApp16
                         lib.AddBorrower(borrower);
                         break;
 
+                    case "Find book":
+                        Console.WriteLine("Enter the name of the book or the name of the author of the book to find it");
+                        string search = Console.ReadLine();
+                        Console.WriteLine("--------------------------------------");
+                        foreach (Book book in lib.books)
+                        {
+                            if (book.Title == search)
+                            {
+                                book.Display();
+                            }
+                            else if (book.Author == search)
+                            {
+                                book.Display();
+                            }
+                        }
+                        break;
+
+                    case "Borrow":
+                        try
+                        {
+                            Console.WriteLine("Enter the name of the customer that wants to borrow a book");
+                            string borrowerName = Console.ReadLine();
+                            Console.WriteLine("--------------------------------------");
+                            Console.WriteLine("Enter the name of the book");
+                            string bookTitle = Console.ReadLine();
+                            Console.WriteLine("--------------------------------------");
+
+                            int borrowerIndex = lib.borrowers.FindIndex(b => b.Name == borrowerName);
+                            if (borrowerIndex != -1)
+                            {
+                                Borrower borrower1 = lib.borrowers[borrowerIndex];
+                                foreach (Book book in lib.books)
+                                    if (bookTitle == book.Title)
+                                        borrower1.Borrowing(book, borrower1); // Pass the book instance to the Borrowing method
+                            }
+                            else
+                            {
+                                Console.WriteLine("Borrower not found");
+                            }
+                        }
+                        catch (SystemException)
+                        {
+                            Console.WriteLine("An error occurred while borrowing the book");
+                        }
+                        Console.WriteLine("--------------------------------------");
+                        break;
 
 
 
