@@ -12,6 +12,7 @@ namespace ConsoleApp16
 
         public List<Borrower> borrowers { get; private set;}
 
+        public List<Transaction> Transactions { get; private set; }
 
         public void AddBook(Book book)
         {
@@ -27,6 +28,7 @@ namespace ConsoleApp16
         {
             books = new List<Book>();
             borrowers = new List<Borrower>();
+            Transactions = new List<Transaction>();
         }
 
         public void DisplayAllBooks()
