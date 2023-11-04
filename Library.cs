@@ -31,7 +31,7 @@ namespace ConsoleApp16
 
         public void DisplayAllBooks()
         {
-            if (books != null) 
+            if (books.Count > 0 && books != null) 
             {
                 int i = 0;
                 foreach(Book book in books)
@@ -44,26 +44,26 @@ namespace ConsoleApp16
             else
             {
                 Console.WriteLine("There isn't any books at the library");
-                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("---------------------------------------");
             }
         }
 
         public void DisplayAllBorrowers()
         {
-            if (borrowers != null) 
+            if (borrowers != null && borrowers.Count > 0) 
             {
                 int i = 0;
                 foreach (Borrower borrower in borrowers)
                 {
                     i++;
-                    Console.WriteLine($"Borrower number {i} : \n");
+                    Console.WriteLine($"Customer number {i} : \n");
                     borrower.Display();
                 }
             }
             else
             {
                 Console.WriteLine("There isn't any customers in the library");
-                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("---------------------------------------");
             }
         }
     }

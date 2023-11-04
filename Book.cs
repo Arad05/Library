@@ -31,13 +31,13 @@ namespace ConsoleApp16
             if (!this.IsBorrowed)
             {
                 Console.WriteLine($"Book Title : {this.Title} \nBook author : {this.Author} \nPublished year : {this.Year} \nBook is available");
-                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("---------------------------------------");
             }
 
             else
             {
                 Console.WriteLine($"Book Title : {this.Title} \nBook author : {this.Author} \nPublished year : {this.Year} \nBook is not available. Borrower : {this.Borrower.Name}");
-                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("---------------------------------------");
             }
         }
 

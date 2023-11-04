@@ -26,15 +26,29 @@ namespace ConsoleApp16
 
         public void Borrowing(Book book, Borrower borrower)
         {
-            book.Borrow(borrower);
-            Books.Add(book);
+            if (!book.IsBorrowed)
+            {
+                book.Borrow(borrower);
+                Books.Add(book);
+            }
+            else
+            {
+                Console.WriteLine("The book is already borrowed");
+            }
         }
 
         public void Remove(Book book) 
         {
-            Books.Remove(book);
-            book.Return();
+            if (Books.Contains(book))
+            {
+                Books.Remove(book);
+                book.Return();
+            }
+
+
         }
+
+
 
         public void Display()
         {
@@ -50,8 +64,9 @@ namespace ConsoleApp16
             {
                 Console.WriteLine($"{this.Name} does not have any books to display");
             }
-            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("---------------------------------------");
 
         }
+
     }
 }
