@@ -21,6 +21,7 @@ namespace ConsoleApp16
             this.Name = name;
             this.ID = idCounter++;
             Books = new List<Book>();
+            
         }
 
         public void Borrowing(Book book, Borrower borrower)

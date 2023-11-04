@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aradi\\source\\repos\\ConsoleApp16\\Library.csproj",
-      "projectName": "Library",
-      "projectPath": "C:\\Users\\aradi\\source\\repos\\ConsoleApp16\\Library.csproj",
+      "projectUniqueName": "C:\\Users\\aradi\\source\\repos\\ConsoleApp16\\ConsoleApp16.csproj",
+      "projectName": "ConsoleApp16",
+      "projectPath": "C:\\Users\\aradi\\source\\repos\\ConsoleApp16\\ConsoleApp16.csproj",
       "packagesPath": "C:\\Users\\aradi\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\aradi\\source\\repos\\ConsoleApp16\\obj\\",
       "projectStyle": "PackageReference",

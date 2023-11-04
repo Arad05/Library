@@ -1,23 +1,94 @@
-﻿namespace ConsoleApp16
+﻿using System.Linq.Expressions;
+using System.Runtime.InteropServices;
+
+namespace ConsoleApp16
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Book dror = new Book("Rain world tutorial","Doron Dororon Peak", 2019);
-            dror.Display();
 
-            Borrower shalev = new Borrower("Shalev");
+            //Book dror = new Book("Rain world tutorial","Doron Dororon Peak", 2019);
+            //dror.Display();
 
-            shalev.Borrowing(dror,shalev);
+            //Borrower shalev = new Borrower("Shalev");
 
-            shalev.Display();
-            dror.Display();
+            //shalev.Borrowing(dror,shalev);
 
-            shalev.Remove(dror);
+            //shalev.Display();
+            //dror.Display();
 
-            shalev.Display();
-            dror.Display();
+            //shalev.Remove(dror);
+
+            //shalev.Display();
+            //dror.Display();
+
+            //lib.DisplayAllBooks();
+            //lib.DisplayAllBorrowers();
+            Library lib = new Library();
+            string input;
+            string choice;
+            //lib.DisplayAllBorrowers();
+            do
+            {
+                Console.WriteLine("What do you want to do at the libarary");
+                input = Console.ReadLine();
+                choice = input.Substring(0, 1).ToUpper() + input.Substring(1);
+                Console.WriteLine("--------------------------------------");
+                switch (choice)
+                {
+                    case "Books":
+                        lib.DisplayAllBooks();
+                        break;
+
+                    case "Customers":
+                        lib.DisplayAllBorrowers();
+                        break;
+
+                    case "Add book":
+                        try
+                        {
+                            Console.WriteLine("Enter the Title of the book");
+                            string title = Console.ReadLine();
+                            Console.WriteLine("--------------------------------------");
+                            Console.WriteLine("Enter the author");
+                            string author = Console.ReadLine();
+                            Console.WriteLine("--------------------------------------");
+                            Console.WriteLine("Enter the year of publision");
+                            int year = int.Parse(Console.ReadLine());
+                            Console.WriteLine("--------------------------------------");
+                            Book book = new Book(title, author, year);
+                            lib.AddBook(book);
+                        }
+                        catch (SystemException)
+                        {
+                            Console.WriteLine("you entered a wrong value");
+                            Console.WriteLine("--------------------------------------");
+                        }
+                        break;
+
+                    case "Add customer":
+                        Console.WriteLine("Enter the name of the costumer");
+                        Borrower borrower = new Borrower(Console.ReadLine());
+                        Console.WriteLine("--------------------------------------");
+                        break;
+
+
+
+
+
+                    case "Exit":
+                        Console.WriteLine("Good bye");
+                        Console.WriteLine("--------------------------------------");
+                        break;
+                    default:
+                        Console.WriteLine("Not a valid opthion");
+                        Console.WriteLine("--------------------------------------");
+                        break;
+                }
+
+            } while (choice != "Exit");
+
         }
     }
 }
