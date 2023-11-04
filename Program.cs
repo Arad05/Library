@@ -48,6 +48,11 @@ namespace ConsoleApp16
                             Console.WriteLine("Enter the year of publision");
                             int year = int.Parse(Console.ReadLine());
                             Console.WriteLine("---------------------------------------");
+                            if(title.Length <= 0 || author.Length <= 0||(title.Length <= 0 && author.Length <= 0))
+                            {
+                                Console.WriteLine("The name and the title of the book need to be at least one character");
+                                break;
+                            }
                             Book book = new Book(title, author, year);
                             lib.AddBook(book);
                         }
@@ -175,7 +180,7 @@ namespace ConsoleApp16
                                 
                             }
 
-                            Console.WriteLine("Enter the name of the customer or the name his ID of the customer to delet him");
+                            Console.WriteLine("Enter the name of the customer or his ID to remove him from this library");
                             string input2 = Console.ReadLine();
                             string search3 = input2.Substring(0, 1).ToUpper() + input2.Substring(1);
                             Console.WriteLine("---------------------------------------");
@@ -195,44 +200,50 @@ namespace ConsoleApp16
                             }
                             if (count6 > 1)
                             {
-                                int id = -1;
-                                while (maxId > id && id > 0 && id.ToString() != search3)
+                                int id = 0;
+                                Console.WriteLine($"There are more then one customer whit the name {search3} please enter ID insted");
+                                while (!(id >= 0) && !(id <= maxId))
                                 {
-                                    Console.WriteLine("There ar more then one customer whit this name please enter id and not name");
-                                    Console.WriteLine("Whice customer do you wahnt to remove?");
-                                    Console.WriteLine("---------------------------------------");
-                                    foreach (Borrower b in lib.borrowers)
-                                    {
-                                        b.Display();
-                                    }
+
                                     try
                                     {
-                                        input2 = Console.ReadLine();
+                                        id = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("---------------------------------------");
                                     }
                                     catch (SystemException)
                                     {
-                                        Console.WriteLine("Invalid input");
-                                    }
-                                    if (!int.TryParse(search3, out id)) {
-                                        id = -1; 
+                                        Console.WriteLine("Invalid input or ID out of range. Please enter a valid ID:");
                                     }
                                 }
+
+                                search3 = id.ToString();
                             }
                             for (int i = 0; i < lib.borrowers.Count; i++)
                             {
                                 Borrower b = lib.borrowers[i];
                                 
-                                if (b.Name == search3 || (int.TryParse(search3, out int id) && b.ID == id))
+                                if (b.Name == search3 )
                                 {
-                                    while (b.Books.Count > 0)
+                                    while (b.Books.Count >= 0)
                                     {
                                         b.Remove(b.Books[0]);
                                     }
+                                    lib.borrowers.RemoveAt(i);
+                                    count5++;
+                                    break;
 
                                 }
-                                Console.WriteLine($"{lib.borrowers[i].Name} has been removed");
-                                lib.borrowers.RemoveAt(i);
-                                count5++;
+                                else if (b.ID == int.Parse(search3))
+                                {
+                                    while (b.Books.Count >= 0)
+                                    {
+                                        b.Remove(b.Books[0]);
+                                    }
+                                    lib.borrowers.RemoveAt(i);
+                                    count5++;
+                                    break;
+                                }
+
                             }
                             if (count5 == 0)
                             {
