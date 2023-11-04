@@ -72,6 +72,11 @@ namespace ConsoleApp16
                         string search = Console.ReadLine();
                         Console.WriteLine("---------------------------------------");
                         int count = 0;
+                        if (search.Length == 0)
+                        {
+                            Console.WriteLine("invalid input");
+                            break;
+                        }
                         foreach (Book book in lib.books)
                         {
                             if (book.Title == search)
@@ -219,20 +224,21 @@ namespace ConsoleApp16
                                 
                                 if (b.Name == search3 || (int.TryParse(search3, out int id) && b.ID == id))
                                 {
-                                    for (int j = 0; j < b.Books.Count; j++)
+                                    while (b.Books.Count > 0)
                                     {
-                                        b.Remove(b.Books[j]);
+                                        b.Remove(b.Books[0]);
                                     }
+
+                                }
                                 Console.WriteLine($"{lib.borrowers[i].Name} has been removed");
                                 lib.borrowers.RemoveAt(i);
                                 count5++;
-                                break;
-                                }
                             }
                             if (count5 == 0)
                             {
                                 Console.WriteLine("Customer not found");
                             }
+                            Console.WriteLine("---------------------------------------");
                         }
                         catch (SystemException)
                         {
