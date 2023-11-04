@@ -44,8 +44,8 @@ namespace ConsoleApp16
             else
             {
                 Console.WriteLine("There isn't any books at the library");
+                Console.WriteLine("--------------------------------------");
             }
-            Console.WriteLine("--------------------------------------");
         }
 
         public void DisplayAllBorrowers()
@@ -63,9 +63,8 @@ namespace ConsoleApp16
             else
             {
                 Console.WriteLine("There isn't any customers in the library");
-
+                Console.WriteLine("--------------------------------------");
             }
-            Console.WriteLine("--------------------------------------");
         }
     }
 }

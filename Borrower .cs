@@ -8,7 +8,7 @@ namespace ConsoleApp16
 {
     public class Borrower
     {
-        int idCounter = 0;
+        static int idCounter = 0;
 
         public string Name { get; private set; }
 

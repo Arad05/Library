@@ -71,6 +71,7 @@ namespace ConsoleApp16
                         Console.WriteLine("Enter the name of the costumer");
                         Borrower borrower = new Borrower(Console.ReadLine());
                         Console.WriteLine("--------------------------------------");
+                        lib.AddBorrower(borrower);
                         break;
 
 
