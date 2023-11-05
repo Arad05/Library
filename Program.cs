@@ -31,6 +31,8 @@ namespace ConsoleApp16
                 switch (choice)
                 {
                     case "More functions":
+                        Console.WriteLine("See all books : Books\n");
+                        Console.WriteLine("See all customers : Customers\n");
                         Console.WriteLine("Add new book to the library: Add book\n");
                         Console.WriteLine("Add new customer : Add customer\n");
                         Console.WriteLine("Find specific book : Find book\n");
@@ -41,8 +43,10 @@ namespace ConsoleApp16
                         Console.WriteLine("Return book to the library : Return book\n");
                         Console.WriteLine("Show all transactions :Transactions");
                         Console.WriteLine("Show transations by customer or by book : Transaction\n");
+                        Console.WriteLine("Exit the library : Exit");
                         Console.WriteLine("---------------------------------------");
                         break;
+
                     case "Books":
                         lib.DisplayAllBooks();
                         break;
