@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp16
 {
+    
     public class Borrower
     {
         static int idCounter = 0;
